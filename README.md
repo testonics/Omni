@@ -5,11 +5,17 @@ TAF is a single stop test automation framework to test mobile (ios & android) or
 Tech stack of the framework is:
 
 Appium: Mobile Testing
+
 Selenium: UI Testing
+
 Rest Assured: API Testing
+
 Langauge: Java
+
 Framework: TestNG/Cucumber
+
 Report: Extent
+
 CI/CD: Github Actions
 
 ### Markdown
