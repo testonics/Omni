@@ -1,4 +1,4 @@
-package StepDef;
+package TestngTest.Web;
 
 import org.junit.Test;
 import org.openqa.selenium.By;

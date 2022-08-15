@@ -6,9 +6,11 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src//test//resources//Features/bank",
-        glue={"src//test//java//StepDef//bank"},
-        plugin = {"pretty"}, monochrome = true
+        features = "src/test/resources/Features",
+        glue={"StepDef"},
+        plugin = {"pretty"},
+        monochrome = true,
+        tags = {"@Selenium"}
 )
 public class RunCucumberTest {
   

@@ -1,6 +1,5 @@
 package api;
 
-import api.User;
 import com.github.javafaker.Faker;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
