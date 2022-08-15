@@ -1,4 +1,4 @@
-package selenium;
+package StepDef.selenium;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;

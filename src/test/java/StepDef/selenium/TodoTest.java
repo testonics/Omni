@@ -1,8 +1,8 @@
-package selenium;
+package StepDef.selenium;
 
+import static StepDef.selenium.TodoUtil.*;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
-import static selenium.TodoUtil.*;
 
 import org.junit.After;
 import org.junit.Before;

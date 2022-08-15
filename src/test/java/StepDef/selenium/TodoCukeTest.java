@@ -1,4 +1,4 @@
-package selenium;
+package StepDef.selenium;
 
 import org.junit.runner.RunWith;
 

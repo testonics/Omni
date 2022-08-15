@@ -1,6 +1,6 @@
 Feature: Bank OCR Kata
 
-  See details: https://github.com/testdouble/contributing-tests/wiki/Bank-OCR-Kata-in-Cucumber
+#  See details: https://github.com/testdouble/contributing-tests/wiki/Bank-OCR-Kata-in-Cucumber
 
   Scenario: read account numbers
     Given I have an account file with contents:

@@ -1,12 +1,16 @@
-package bank;
+package TestRunners;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(plugin = {"pretty"}, monochrome = true)
-public class RunCukesTest {
+@CucumberOptions(
+        features = "src//test//resources//Features/bank",
+        glue={"src//test//java//StepDef//bank"},
+        plugin = {"pretty"}, monochrome = true
+)
+public class BankRunCukesTest {
   
   //This test is intentionally blank
   

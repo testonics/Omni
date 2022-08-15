@@ -1,8 +1,9 @@
-package selenium;
+package StepDef.selenium;
 
+import static StepDef.selenium.TodoUtil.addTodo;
+import static StepDef.selenium.TodoUtil.todoAt;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
-import static selenium.TodoUtil.*;
 
 import org.openqa.selenium.WebDriver;
 
