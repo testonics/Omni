@@ -1,7 +1,7 @@
 package endpoints;
 
 import io.restassured.response.Response;
-import utils.restassured;
+import api.restassured;
 
 public class UserEndpoints {
 

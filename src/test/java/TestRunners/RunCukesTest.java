@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         glue={"src//test//java//StepDef//bank"},
         plugin = {"pretty"}, monochrome = true
 )
-public class BankRunCukesTest {
+public class RunCukesTest {
   
   //This test is intentionally blank
   
