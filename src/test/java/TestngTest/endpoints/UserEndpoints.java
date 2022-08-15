@@ -1,4 +1,4 @@
-package endpoints;
+package TestngTest.endpoints;
 
 import io.restassured.response.Response;
 import api.restassured;

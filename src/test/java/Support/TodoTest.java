@@ -1,6 +1,6 @@
-package StepDef.selenium;
+package Support;
 
-import static StepDef.selenium.TodoUtil.*;
+import static Pages.TodoUtil.*;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
+import Pages.TodoUtil;
 import web.Browser;
 
 public class TodoTest {

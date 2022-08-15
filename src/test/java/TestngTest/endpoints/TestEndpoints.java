@@ -1,4 +1,4 @@
-package endpoints;
+package TestngTest.endpoints;
 
 import java.util.HashMap;
 import java.util.Map;

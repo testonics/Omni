@@ -1,4 +1,4 @@
-package StepDef.selenium;
+package StepDef;
 
 import org.junit.Test;
 import org.openqa.selenium.By;

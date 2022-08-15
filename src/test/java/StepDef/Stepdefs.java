@@ -1,4 +1,4 @@
-package StepDef.bank;
+package StepDef;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;

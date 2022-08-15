@@ -1,7 +1,5 @@
 Feature: Bank OCR Kata
 
-#  See details: https://github.com/testdouble/contributing-tests/wiki/Bank-OCR-Kata-in-Cucumber
-
   Scenario: read account numbers
     Given I have an account file with contents:
       """
@@ -12,3 +10,13 @@ Feature: Bank OCR Kata
       """
     When I parse the file
     Then the first account number is "123456789"
+
+  Scenario: a few cukes
+    Given I have 42 cukes in my belly
+    When I wait 1 hour
+    Then my belly should growl
+
+
+  Scenario: Creating a todo
+    When I type the todo "Do Things!"
+    Then todo list item 1 has text "Do Things!"

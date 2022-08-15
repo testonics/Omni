@@ -1,7 +1,7 @@
-package StepDef.selenium;
+package StepDef;
 
-import static StepDef.selenium.TodoUtil.addTodo;
-import static StepDef.selenium.TodoUtil.todoAt;
+import static Pages.TodoUtil.addTodo;
+import static Pages.TodoUtil.todoAt;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
@@ -11,6 +11,7 @@ import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import Pages.TodoUtil;
 import web.Browser;
 
 public class TodoSteps {
