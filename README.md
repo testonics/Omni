@@ -1,8 +1,22 @@
-## Selenium Framework With Cucumber and Java
+## Automation Test Framework (TAF) for Mobile, Web and API Testing
 
-You can use the [editor on GitHub](https://github.com/AutomationTestFramework/Cucumber/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+TAF is a single stop test automation framework to test mobile (ios & android) or web applicationa and API testing.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Tech stack of the framework is:
+
+Appium: Mobile Testing
+
+Selenium: UI Testing
+
+Rest Assured: API Testing
+
+Langauge: Java
+
+Framework: TestNG/Cucumber
+
+Report: Extent
+
+CI/CD: Github Actions
 
 ### Markdown
 
