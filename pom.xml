@@ -113,6 +113,14 @@
         </dependency>
     </dependencies>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>TAF Package</name>
+            <url>https://maven.pkg.github.com/AutomationTestFramework/TAF</url>
+        </repository>
+    </distributionManagement>
+
     <build>
         <plugins>
             <plugin>
