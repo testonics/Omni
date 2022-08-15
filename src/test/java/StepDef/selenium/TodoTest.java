@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
-import support.Browser;
+import web.Browser;
 
 public class TodoTest {
 
