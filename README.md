@@ -1,22 +1,14 @@
-## Automation Test Framework (TAF) for Mobile, Web and API Testing
+## TAF : Test Automation Framework for Mobile, Web and API Testing
 
-TAF is a single stop test automation framework to test mobile (ios & android) or web applicationa and API testing.
+TAF is a single stop test automation framework to test mobile (ios & android) or web applicationa and API testing. Tech stack of the framework is:
 
-Tech stack of the framework is:
-
-Appium: Mobile Testing
-
-Selenium: UI Testing
-
-Rest Assured: API Testing
-
-Langauge: Java
-
-Framework: TestNG/Cucumber
-
-Report: Extent
-
-CI/CD: Github Actions
+- Appium: Mobile Testing
+- Selenium: UI Testing
+- Rest Assured: API Testing
+- Langauge: Java
+- Framework: TestNG/Cucumber
+- Report: Extent
+- CI/CD: Github Actions
 
 ### Markdown
 
@@ -41,11 +33,3 @@ Syntax highlighted code block
 ```
 
 For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/AutomationTestFramework/Cucumber/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact Support](https://support.github.com/contact) and we’ll help you sort it out.
