@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>Cucumber</artifactId>
+    <artifactId>taf</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -146,6 +146,9 @@
                     <systemPropertyVariables>
                         <browser>chrome</browser>
                     </systemPropertyVariables>
+                    <includes>
+                        <include>**/RunCucumberTest.java</include>
+                    </includes>
                 </configuration>
             </plugin>
             <plugin>
