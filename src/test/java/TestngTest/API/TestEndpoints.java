@@ -1,4 +1,4 @@
-package TestngTest.endpoints;
+package TestngTest.API;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,13 +6,13 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.google.gson.Gson;
 import io.restassured.response.Response;
-import api.hooks;
+import Support.hooksAPI;
 import utils.jsonUtils;
 
 /**
  * Perform API Testing for the services using CRUD Design Pattern
  */
-public class TestEndpoints extends hooks {
+public class TestEndpoints extends hooksAPI {
 
     jsonUtils jsonutil = new jsonUtils();
 

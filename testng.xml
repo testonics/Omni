@@ -3,7 +3,7 @@
 <suite name="testngSuite" verbose="1">
     <test name="restassured">
         <classes>
-            <class name="endpoints.TestEndpoints"/>
+            <class name="TestngTest.API.TestEndpoints"/>
         </classes>
     </test>
 </suite>

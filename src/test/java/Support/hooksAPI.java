@@ -1,12 +1,13 @@
-package api;
+package Support;
 
+import api.User;
 import com.github.javafaker.Faker;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import report.Extent;
 import report.*;
 
-public class hooks {
+public class hooksAPI {
     public Faker faker = new Faker() ;
     public User userPayload=new User();
     public Extent extent = new Extent();
