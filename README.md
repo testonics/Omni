@@ -1,6 +1,6 @@
-## TAF : Test Automation Framework for Mobile, Web and API Testing
+## Omni : Test Automation Framework for Mobile, Web and API Testing
 
-TAF is a single stop test automation framework to test mobile (ios & android) or web applicationa and API testing. Tech stack of the framework is:
+Omni a single stop test automation framework to test mobile (ios & android) or web applicationa and API testing. Tech stack of the framework is:
 
 - Appium: Mobile Testing
 - Selenium: UI Testing
