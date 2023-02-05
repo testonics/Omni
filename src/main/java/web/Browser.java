@@ -1,7 +1,9 @@
 package web;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
@@ -13,18 +15,28 @@ public class Browser {
 
 		WebDriver driver;
 
-		//Setting system properties of ChromeDriver
-		System.setProperty("webdriver.chrome.driver", "C:\\Projects\\Github\\TAF\\src\\main\\resources\\drivers\\chromedriver_104.exe");
-		String browser = System.getProperty("browser");
+		//Setting up this is not required anymore with Webdrivermanager
+//		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\main\\resources\\drivers\\chromedriver_108.exe");
 
-		if(browser.equals("firefox")) {
-			driver =  new FirefoxDriver();
-		} else if(browser.equals("chrome")) {
-			driver =  new ChromeDriver();
-		} else if(browser.equals("msie")) {
-			driver =  new InternetExplorerDriver();
-		} else {
-			throw new RuntimeException("Unrecognized system property 'browser': " + browser);
+		String browser = System.getProperty("browser");
+		if (browser == null) browser = "edge";
+
+		System.out.println("Browser To be Launched : " + browser);
+		switch (browser) {
+			case "firefox":
+				driver = new FirefoxDriver();
+				break;
+			case "chrome":
+				// Set up the wWebDriverManager for chrome driver
+				WebDriverManager.chromedriver().setup();
+				driver = new ChromeDriver();
+				break;
+			case "edge":
+				WebDriverManager.edgedriver().setup();
+				driver = new EdgeDriver();
+				break;
+			default:
+				throw new RuntimeException("Unrecognized system property 'browser': " + browser);
 		}
 
 		driver.manage().window().maximize();
