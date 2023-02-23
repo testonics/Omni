@@ -2,17 +2,20 @@ package utils;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPageTree;
+import org.apache.pdfbox.pdmodel.font.PDType0Font;
 import org.apache.pdfbox.text.PDFTextStripper;
+import org.apache.pdfbox.text.TextPosition;
 import org.testng.TestException;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class PDFCompare {
 
     public static void main(String[] args) throws IOException {
-        File file1 = new File("C:\\Projects\\Testonics\\Omni\\Omni\\src\\test\\resources\\TestData\\PDF1.pdf");
-        File file2 = new File("C:\\Projects\\Testonics\\Omni\\Omni\\src\\test\\resources\\TestData\\PDF2.pdf");
+        File file1 = new File(".\\src\\test\\resources\\TestData\\PDF1.pdf");
+        File file2 = new File(".\\src\\test\\resources\\TestData\\PDF2.pdf");
         comparePDF(file1,file2);
     }
 
@@ -28,7 +31,33 @@ public class PDFCompare {
                 System.out.println(message);
                 throw new TestException(message);
             }
-            PDFTextStripper pdfStripper = new PDFTextStripper();
+
+            //Overwritten protected method to get font and size of the text
+            PDFTextStripper pdfStripper = new PDFTextStripper() {
+                String prevBaseFont = "";
+                String prevBaseFontSize = "";
+
+                protected void writeString(String text, List<TextPosition> textPositions) throws IOException {
+                    StringBuilder builder = new StringBuilder();
+
+                    for (TextPosition position : textPositions) {
+                        String baseFont = position.getFont().getFontDescriptor().getFontName();
+                        String baseFontSize = String.valueOf(position.getFontSizeInPt());
+                        if (baseFont != null && !baseFont.equals(prevBaseFont)) {
+                            builder.append('[').append(baseFont).append(']');
+                            prevBaseFont = baseFont;
+                        }
+                        if (!baseFontSize.equals(prevBaseFontSize)) {
+                            builder.append('[').append(baseFontSize).append(']');
+                            prevBaseFontSize = baseFontSize;
+                        }
+                        builder.append(position.getUnicode());
+                    }
+                    writeString(builder.toString());
+                }
+            };
+
+
             System.out.println("pdfStripper is :- " + pdfStripper);
             System.out.println("pdf1pages.size() is :- " + pdf1pages.getCount());
             for (int i = 0; i < pdf1pages.getCount(); i++) {
@@ -58,4 +87,7 @@ public class PDFCompare {
             pdf2.close();
         }
     }
+
+
+
 }
