@@ -2,7 +2,6 @@ package utils;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPageTree;
-import org.apache.pdfbox.pdmodel.font.PDType0Font;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.pdfbox.text.TextPosition;
 import org.testng.TestException;
@@ -33,7 +32,7 @@ public class PDFCompare {
             }
 
             //Overwritten protected method to get font and size of the text
-            PDFTextStripper pdfStripper = new PDFTextStripper() {
+            PDFTextStripper pdfStripper1 = new PDFTextStripper() {
                 String prevBaseFont = "";
                 String prevBaseFontSize = "";
 
@@ -58,13 +57,39 @@ public class PDFCompare {
             };
 
 
-            System.out.println("pdfStripper is :- " + pdfStripper);
+            //Overwritten protected method to get font and size of the text
+            PDFTextStripper pdfStripper2 = new PDFTextStripper() {
+                String prevBaseFont = "";
+                String prevBaseFontSize = "";
+
+                protected void writeString(String text, List<TextPosition> textPositions) throws IOException {
+                    StringBuilder builder = new StringBuilder();
+
+                    for (TextPosition position : textPositions) {
+                        String baseFont = position.getFont().getFontDescriptor().getFontName();
+                        String baseFontSize = String.valueOf(position.getFontSizeInPt());
+                        if (baseFont != null && !baseFont.equals(prevBaseFont)) {
+                            builder.append('[').append(baseFont).append(']');
+                            prevBaseFont = baseFont;
+                        }
+                        if (!baseFontSize.equals(prevBaseFontSize)) {
+                            builder.append('[').append(baseFontSize).append(']');
+                            prevBaseFontSize = baseFontSize;
+                        }
+                        builder.append(position.getUnicode());
+                    }
+                    writeString(builder.toString());
+                }
+            };
+
             System.out.println("pdf1pages.size() is :- " + pdf1pages.getCount());
             for (int i = 0; i < pdf1pages.getCount(); i++) {
-                pdfStripper.setStartPage(i + 1);
-                pdfStripper.setEndPage(i + 1);
-                String pdf1PageText = pdfStripper.getText(pdf1);
-                String pdf2PageText = pdfStripper.getText(pdf2);
+                pdfStripper1.setStartPage(i + 1);
+                pdfStripper1.setEndPage(i + 1);
+                pdfStripper2.setStartPage(i + 1);
+                pdfStripper2.setEndPage(i + 1);
+                String pdf1PageText = pdfStripper1.getText(pdf1);
+                String pdf2PageText = pdfStripper2.getText(pdf2);
                 String[] pdf1PageTextLines = pdf1PageText.split("\n");
                 String[] pdf2PageTextLines = pdf2PageText.split("\n");
                 if (!pdf1PageText.equals(pdf2PageText)) {
