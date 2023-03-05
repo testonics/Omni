@@ -16,7 +16,7 @@
 
 ```markdown
 Syntax highlighted code block
-`
+
 Install 1/2: Add this to pom.xml:
 
 <dependency>
@@ -27,12 +27,11 @@ Install 1/2: Add this to pom.xml:
 
 Install 2/2: Run via command line
 mvn install
-`
-
-[Latest Package](https://github.com/testonics/Omni/packages/)
-
-[Link](url) and ![Image](src)
 ```
+
+[Click Here For Latest Package](https://github.com/testonics/Omni/packages/)
+
+![Image](docs/Logo.png)
 
 For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 
