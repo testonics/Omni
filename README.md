@@ -1,6 +1,8 @@
 ## Omni : Test Automation Framework for Mobile, Web and API Testing
-Visit [Link](https://www.testonics.in) for more details.
 
+```
+Visit _**[https://www.testonics.in](https://www.testonics.in)**_ for more details.
+```
 Omni a single stop test automation framework to test mobile (ios & android) or web applicationa and API testing. Tech stack of the framework is:
 
 - Appium: Mobile Testing
@@ -11,9 +13,6 @@ Omni a single stop test automation framework to test mobile (ios & android) or w
 - Report: Extent
 - CI/CD: Github Actions
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
 ```markdown
 Syntax highlighted code block
