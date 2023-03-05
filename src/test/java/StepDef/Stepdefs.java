@@ -2,6 +2,7 @@ package StepDef;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
+import frameworks.Omni;
 import mobile.android;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -24,28 +25,23 @@ public class Stepdefs {
 
     WebDriver driver;
 
+    Omni omni = new Omni();
+
     @Given("^Login and Search Google$")
     public void loginAndSearch() throws Throwable {
-        //Creating an object of ChromeDriver
-        driver = Browser.getWebDriver();
-
-        driver.get("https://www.google.com");
+        omni.setDriver();
+        omni.navigate();
     }
-
 
     @When("^Search On Google$")
     public void searchOnGoogle() throws Throwable {
-
-        WebElement element = driver.findElement(By.name("q"));
-        element.sendKeys("Cheese!");
-        element.submit();
-        System.out.println("Page title is: " + driver.getTitle());
-        driver.quit();
+        omni.enter("//*[@name='q']","Cheese!");
+        omni.close();
     }
-
 
     @When("^Test selenium 4 features$")
     public void selenium4Features() throws Throwable {
+        driver = (WebDriver) omni.getDriver();
 
         //Relative Locators
         String relativeElementText = driver.findElement(with(By.tagName("div"))
