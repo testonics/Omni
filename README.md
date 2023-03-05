@@ -1,3 +1,5 @@
+![Image](docs/Logo.png)
+
 ## Omni : Test Automation Framework for Mobile, Web and API Testing
 
 ###### This framework is developed by [Testonics](https://www.testonics.in) 
@@ -13,10 +15,8 @@
 - Report: Extent
 - CI/CD: Github Actions
 
-
+## Installation Steps
 ```markdown
-Syntax highlighted code block
-
 Install 1/2: Add this to pom.xml:
 
 <dependency>
@@ -26,12 +26,10 @@ Install 1/2: Add this to pom.xml:
 </dependency>
 
 Install 2/2: Run via command line
-mvn install
 ```
+`mvn install`
 
-[Click Here For Latest Package](https://github.com/testonics/Omni/packages/)
-
-![Image](docs/Logo.png)
+## [Click Here For Latest Package](https://github.com/testonics/Omni/packages/)
 
 For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 
