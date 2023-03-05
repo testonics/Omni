@@ -1,8 +1,8 @@
 ## Omni : Test Automation Framework for Mobile, Web and API Testing
 
-```
-##This frameworkd is developed by [Testonics](https://www.testonics.in). Visit [Testonics](https://www.testonics.in) for more details.##
-```
+## This frameworkd is developed by [Testonics](https://www.testonics.in) 
+### Visit [Testonics](https://www.testonics.in) for more details.
+
 Omni a single stop test automation framework to test mobile (ios & android) or web applicationa and API testing. Tech stack of the framework is:
 
 - Appium: Mobile Testing
