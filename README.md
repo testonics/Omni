@@ -17,7 +17,7 @@
 
 ## Installation Steps
 ```markdown
-#### Install 1/2: Add this to pom.xml:
+## Install 1/2: Add this to pom.xml:
 
 <dependency>
   <groupId>org.testonics</groupId>
@@ -25,13 +25,13 @@
   <version>1.0-SNAPSHOT</version>
 </dependency>
 
-#### Install 2/2: Run via command line
-###### mvn install
+## Install 2/2: Run via command line
+mvn install
 ```
 
 ## [Click Here For Latest Package](https://github.com/testonics/Omni/packages/)
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+###### For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 
 ## Contact Us
 
