@@ -31,8 +31,10 @@ mvn install
 
 ## [Click Here For Latest Package](https://github.com/testonics/Omni/packages/)
 
-###### For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
 ## Contact Us
 
 Send your queries to nikhil.jain.2005@gmail.com know more.
+
+## Appendix
+
+###### For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
