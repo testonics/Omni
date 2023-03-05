@@ -17,7 +17,7 @@
 
 ## Installation Steps
 ```markdown
-Install 1/2: Add this to pom.xml:
+#### Install 1/2: Add this to pom.xml:
 
 <dependency>
   <groupId>org.testonics</groupId>
@@ -25,9 +25,9 @@ Install 1/2: Add this to pom.xml:
   <version>1.0-SNAPSHOT</version>
 </dependency>
 
-Install 2/2: Run via command line
+#### Install 2/2: Run via command line
+###### mvn install
 ```
-`mvn install`
 
 ## [Click Here For Latest Package](https://github.com/testonics/Omni/packages/)
 
