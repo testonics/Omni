@@ -13,6 +13,7 @@
         <rest.version>4.3.3</rest.version>
         <appium.version>8.3.0</appium.version>
         <selenium.version>4.8.0</selenium.version>
+        <java.version>8</java.version>
     </properties>
 
     <dependencies>
@@ -190,8 +191,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>8</source>
-                    <target>8</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
         </plugins>
