@@ -6,7 +6,34 @@
 
     <groupId>in.testonics.omni</groupId>
     <artifactId>omni</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <!--Project Details-->
+    <name>Omni</name>
+    <description>A single platform for the automation of all type of functional testing and most useful utilities required in testing</description>
+    <url>https://omni.testonics.in/</url>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Testonics</name>
+            <organization>Testonics</organization>
+            <organizationUrl>https://www.testonics.in/</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/testonics/Omni.git</connection>
+        <developerConnection>scm:git:ssh://github.com:testonics/Omni.git</developerConnection>
+        <url>http://github.com/testonics/Omni/tree/master</url>
+    </scm>
 
     <properties>
         <browser>firefox</browser>
