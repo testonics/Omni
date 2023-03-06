@@ -16,14 +16,30 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class DeadLink {
 
-    private static final int numberOfThreads = 5;
+    private int numberOfThreads = 5;
     private static Map<String,String> links = new ConcurrentHashMap<>();
-    private static final String BASE_URL_CHECK= "google.com";
-    private static final int urlSizeToCheck = 2;
-    private static final String BASE_URL = "https://www.google.com";
+    private String BASE_URL_CHECK= "google.com";
+    private int urlSizeToCheck = 2;
+    private String BASE_URL = "https://www.google.com";
     private static final String xpathToURLs = "//*[@href and not(contains(@style,'none')) and not(contains(@type,'hidden'))]";
 
-    public static void main(String[] args) throws InterruptedException {
+    public void setNumberOfThreads(int numberOfThreads){
+        this.numberOfThreads = numberOfThreads;
+    }
+
+    public void setBaseURL(String baseURL){
+        this.BASE_URL = baseURL;
+    }
+
+    public void setBaseURLCheck(String baseURLCheck){
+        this.BASE_URL_CHECK = baseURLCheck;
+    }
+
+    public void setUrlSizeToCheck(int urlSizeToCheck){
+        this.urlSizeToCheck = urlSizeToCheck;
+    }
+
+    public void findDeadLinks() throws InterruptedException {
         List<Thread> threads = new ArrayList<>();
 
         getListOfURLs();
@@ -44,8 +60,7 @@ public class DeadLink {
         System.out.println("List Of URLs : " + new MultiThreadingWithRunnable().getURLs());
     }
 
-
-    public static Map<String,String> setUrlSizeCheck(Map<String,String> links){
+    private Map<String,String> setUrlSizeCheck(Map<String,String> links){
         Map<String,String> urls = new ConcurrentHashMap<>();
         for (Map.Entry mapElement : links.entrySet()) {
             String link= mapElement.getKey().toString();
@@ -58,7 +73,7 @@ public class DeadLink {
         return urls;
     }
 
-    public static Map<String,String> setBaseURLCheck(Map<String,String> links) {
+    private Map<String,String> setBaseURLCheck(Map<String,String> links) {
         Map<String, String> urls = new ConcurrentHashMap<>();
         for (Map.Entry mapElement : links.entrySet()) {
             String link = mapElement.getKey().toString();
@@ -69,7 +84,7 @@ public class DeadLink {
         return urls;
     }
 
-    public static void getListOfURLs(){
+    private void getListOfURLs(){
         WebDriver driver = Browser.getWebDriver();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.get(BASE_URL);
@@ -81,7 +96,4 @@ public class DeadLink {
         driver.quit();
     }
 
-//    public void convertMapToCSV() throws IOException {
-//        Files.createFile(Paths.get(""));
-//    }
 }

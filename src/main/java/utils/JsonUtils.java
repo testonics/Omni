@@ -5,9 +5,9 @@ import io.restassured.path.json.JsonPath;
 import java.io.File;
 import java.util.Map;
 
-public class jsonUtils {
+public class JsonUtils {
 
-     public Map<Object, Object> jsonToMap(File file){
+    public Map<Object, Object> jsonToMap(File file){
          return new JsonPath(file).getMap("");
      }
 

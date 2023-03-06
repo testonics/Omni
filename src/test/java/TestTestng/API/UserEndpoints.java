@@ -1,4 +1,4 @@
-package TestngTest.API;
+package TestTestng.API;
 
 import io.restassured.response.Response;
 import api.restassured;

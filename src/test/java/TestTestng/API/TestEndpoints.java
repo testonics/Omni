@@ -1,4 +1,4 @@
-package TestngTest.API;
+package TestTestng.API;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,14 +7,14 @@ import org.testng.annotations.Test;
 import com.google.gson.Gson;
 import io.restassured.response.Response;
 import Support.hooksAPI;
-import utils.jsonUtils;
+import utils.JsonUtils;
 
 /**
  * Perform API Testing for the services using CRUD Design Pattern
  */
 public class TestEndpoints extends hooksAPI {
 
-    jsonUtils jsonutil = new jsonUtils();
+    JsonUtils jsonutil = new JsonUtils();
 
     @Test(priority = 1, description = "Creating the test user")
     public void testPostUser() {

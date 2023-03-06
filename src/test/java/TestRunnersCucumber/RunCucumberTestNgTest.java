@@ -1,5 +1,5 @@
 //This test class executes cucumber scenarios in parallel
-package TestRunners;
+package TestRunnersCucumber;
 
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.AbstractTestNGCucumberTests;

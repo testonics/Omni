@@ -2,14 +2,14 @@ package report;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
-import utils.dateUtils;
+import utils.DateUtils;
 
 import java.io.File;
 
 public class Extent {
 
     public ExtentReports extent;
-    public dateUtils date = new dateUtils();
+    public DateUtils date = new DateUtils();
 
     public void createReport(){
 
