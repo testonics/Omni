@@ -1,6 +1,6 @@
 package TestJUnit;
 
-import org.testonics.omni.utils.DeadLink;
+import in.testonics.omni.utils.DeadLink;
 
 public class DeadLinksTest {
 

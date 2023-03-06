@@ -1,7 +1,7 @@
 package TestTestng.API;
 
 import io.restassured.response.Response;
-import org.testonics.omni.api.restassured;
+import in.testonics.omni.api.restassured;
 
 public class UserEndpoints {
 

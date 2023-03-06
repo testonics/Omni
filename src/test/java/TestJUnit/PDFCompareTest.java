@@ -1,6 +1,6 @@
 package TestJUnit;
 
-import org.testonics.omni.utils.ComparePDF;
+import in.testonics.omni.utils.ComparePDF;
 
 import java.io.File;
 

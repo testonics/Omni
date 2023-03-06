@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 
-import org.testonics.omni.web.Browser;
+import in.testonics.omni.web.Browser;
 
 public class SimpleTest {
 
