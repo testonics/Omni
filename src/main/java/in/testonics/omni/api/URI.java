@@ -2,7 +2,7 @@ package in.testonics.omni.api;
 
 /**
  *
- * Swagger URI --> https://petstore.swagger.io
+ * Swagger URI https://petstore.swagger.io
  * config.Routes class allow the testers to design the end-points for all services that are  available
  */
 public class URI {
