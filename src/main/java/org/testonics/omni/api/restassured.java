@@ -1,10 +1,9 @@
-package api;
+package org.testonics.omni.api;
 
 import io.restassured.RestAssured;
 //import io.restassured.http.ContentType;
 //import io.restassured.response.Response;
 
-import api.URI;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 

@@ -1,12 +1,17 @@
-package mobile;
+package org.testonics.omni.frameworks;
 
+import org.testonics.omni.Interface.Omni;
 import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.MutableCapabilities;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+
 import java.net.URL;
 
-public class android {
+public class Android implements Omni {
 
     protected static ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<>();
     MutableCapabilities caps = new MutableCapabilities();
@@ -44,5 +49,46 @@ public class android {
 
     public RemoteWebDriver getDriver(){
         return driver.get();
+    }
+
+    public void closeDriver(){
+        getDriver().close();
+        getDriver().quit();
+    }
+
+    public void navigate(){
+        //TODO
+    }
+
+    @Override
+    public void click(Object element) {
+        WebElement webElement = getWebElement(element);
+        webElement.click();
+    }
+
+    @Override
+    public void enter(Object element, String value) {
+        WebElement webElement = getWebElement(element);
+        webElement.sendKeys(value);
+        webElement.submit();
+    }
+
+    @Override
+    public void select(Object element, Object value) {
+        WebElement webElement = getWebElement(element);
+        Select dropDown = new Select(webElement);
+        if (value instanceof String) {
+            dropDown.selectByValue((String) value);
+        }else{
+            dropDown.selectByIndex((Integer) value);
+        }
+
+    }
+
+    WebElement getWebElement(Object element){
+        if (element instanceof String)
+            return getDriver().findElement(By.xpath((String) element));
+        else
+            return (WebElement) element;
     }
 }

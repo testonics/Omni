@@ -11,18 +11,16 @@
     3.Using runnable will give you an object that can be shared amongst multiple threads.
      */
 
-package utils.MultiThread;
+package org.testonics.omni.utils.MultiThread;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import web.Browser;
+import org.testonics.omni.web.Browser;
 
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

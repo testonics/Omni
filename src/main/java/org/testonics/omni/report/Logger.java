@@ -1,4 +1,4 @@
-package report;
+package org.testonics.omni.report;
 
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;

@@ -1,8 +1,8 @@
-package report;
+package org.testonics.omni.report;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
-import utils.DateUtils;
+import org.testonics.omni.utils.DateUtils;
 
 import java.io.File;
 

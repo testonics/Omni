@@ -1,4 +1,4 @@
-package frameworks;
+package org.testonics.omni.frameworks;
 
 public class Omni {
     public static String framework = "Selenium";

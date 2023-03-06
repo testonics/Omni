@@ -2,11 +2,10 @@ package StepDef;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
-import frameworks.Omni;
-import mobile.android;
+import org.testonics.omni.frameworks.Omni;
+import org.testonics.omni.mobile.android;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v109.emulation.Emulation;
@@ -14,7 +13,7 @@ import org.openqa.selenium.devtools.v109.log.Log;
 import org.openqa.selenium.devtools.v109.performance.Performance;
 import org.openqa.selenium.devtools.v109.performance.model.Metric;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import web.Browser;
+import org.testonics.omni.web.Browser;
 
 import java.util.List;
 import java.util.Optional;

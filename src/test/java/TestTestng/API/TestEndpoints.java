@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import com.google.gson.Gson;
 import io.restassured.response.Response;
 import Support.hooksAPI;
-import utils.JsonUtils;
+import org.testonics.omni.utils.JsonUtils;
 
 /**
  * Perform API Testing for the services using CRUD Design Pattern

@@ -1,11 +1,11 @@
-package frameworks;
+package org.testonics.omni.frameworks;
 
-import Interface.Omni;
+import org.testonics.omni.Interface.Omni;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-import web.Browser;
+import org.testonics.omni.web.Browser;
 
 public class Selenium implements Omni {
 

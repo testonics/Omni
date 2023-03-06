@@ -1,4 +1,4 @@
-package mobile;
+package org.testonics.omni.mobile;
 
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;

@@ -1,4 +1,4 @@
-package utils.MultiThread;
+package org.testonics.omni.utils.MultiThread;
 
 public class MultiThreadTest {
 

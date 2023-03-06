@@ -1,4 +1,4 @@
-package Interface;
+package org.testonics.omni.Interface;
 
 public interface Omni {
     void click(Object element);

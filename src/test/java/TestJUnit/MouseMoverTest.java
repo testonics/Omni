@@ -1,6 +1,6 @@
 package TestJUnit;
 
-import utils.MouseMover;
+import org.testonics.omni.utils.MouseMover;
 
 public class MouseMoverTest {
 

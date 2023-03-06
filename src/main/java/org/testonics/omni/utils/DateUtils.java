@@ -1,4 +1,4 @@
-package utils;
+package org.testonics.omni.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

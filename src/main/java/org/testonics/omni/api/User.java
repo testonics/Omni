@@ -1,4 +1,4 @@
-package api;
+package org.testonics.omni.api;
 
 public class User {
 

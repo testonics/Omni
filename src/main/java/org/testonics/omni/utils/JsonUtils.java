@@ -1,4 +1,4 @@
-package utils;
+package org.testonics.omni.utils;
 
 import io.restassured.path.json.JsonPath;
 

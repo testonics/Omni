@@ -1,4 +1,4 @@
-package web;
+package org.testonics.omni.web;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

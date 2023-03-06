@@ -1,4 +1,4 @@
-package utils;
+package org.testonics.omni.utils;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPageTree;

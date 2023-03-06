@@ -1,6 +1,6 @@
-package frameworks;
+package org.testonics.omni.frameworks;
 
-import Interface.Omni;
+import org.testonics.omni.Interface.Omni;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.BrowserType;
