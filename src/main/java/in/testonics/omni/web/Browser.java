@@ -3,9 +3,9 @@ package in.testonics.omni.web;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 
 import java.util.concurrent.TimeUnit;
 
@@ -29,7 +29,9 @@ public class Browser {
 			case "chrome":
 				// Set up the wWebDriverManager for chrome driver
 				WebDriverManager.chromedriver().setup();
-				driver = new ChromeDriver();
+				ChromeOptions options = new ChromeOptions();
+				options.addArguments("--headless");
+				driver = new ChromeDriver(options);
 				break;
 			case "edge":
 				WebDriverManager.edgedriver().setup();

@@ -1,13 +1,14 @@
 package TestTestng.API;
 
+import Support.hooksAPI;
+import com.google.gson.Gson;
+import in.testonics.omni.utils.JsonUtils;
+import io.restassured.response.Response;
+import org.junit.Assert;
+import org.testng.annotations.Test;
+
 import java.util.HashMap;
 import java.util.Map;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-import com.google.gson.Gson;
-import io.restassured.response.Response;
-import Support.hooksAPI;
-import in.testonics.omni.utils.JsonUtils;
 
 /**
  * Perform API Testing for the services using CRUD Design Pattern

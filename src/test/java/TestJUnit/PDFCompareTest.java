@@ -1,12 +1,14 @@
 package TestJUnit;
 
 import in.testonics.omni.utils.ComparePDF;
+import org.junit.Test;
 
 import java.io.File;
 
 public class PDFCompareTest {
 
-    public static void main(String[] args) throws Exception {
+    @Test
+    public void main() throws Exception {
         ComparePDF comparePDF = new ComparePDF();
 
         File file1 = new File(".\\src\\test\\resources\\TestData\\PDF1.pdf");

@@ -47,6 +47,7 @@ public class Stepdefs {
                 .below(By.name("q")).toRightOf(By.linkText("हिन्दी"))).getText();
         System.out.println("Relative Locator Text : " + relativeElementText);
 
+        driver.quit();
         //Switching and opening new window or tab
         //        driver.switchTo().newWindow(WindowType.WINDOW);
         //        driver.switchTo().newWindow(WindowType.TAB);

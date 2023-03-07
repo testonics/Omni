@@ -1,10 +1,12 @@
 package TestJUnit;
 
 import in.testonics.omni.utils.DeadLink;
+import org.junit.Test;
 
 public class DeadLinksTest {
 
-    public static void main(String[] args) throws InterruptedException {
+    @Test
+    public void main() throws InterruptedException {
         DeadLink deadLink = new DeadLink();
 
         deadLink.setBaseURL("https://www.google.com");

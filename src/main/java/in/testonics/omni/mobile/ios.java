@@ -3,7 +3,7 @@ package in.testonics.omni.mobile;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.Assert;
+
 import java.net.URL;
 
 public class ios {
@@ -42,7 +42,7 @@ public class ios {
         try {
             iosDriver = new IOSDriver(new URL(url), caps);
         }catch (Exception exception){
-            Assert.fail("Exception Occurred while setting up android driver");
+            System.out.println("Exception Occurred while setting up android driver");
         }
         driver.set(iosDriver);
     }

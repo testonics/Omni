@@ -1,12 +1,11 @@
 package TestTestng.Web;
 
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-
 import in.testonics.omni.web.Browser;
+import org.testng.annotations.Test;
 
 public class SimpleTest {
 

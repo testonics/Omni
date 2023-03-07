@@ -16,11 +16,11 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class DeadLink {
 
-    private int numberOfThreads = 5;
+    private int numberOfThreads = 1;
     private static Map<String,String> links = new ConcurrentHashMap<>();
-    private String BASE_URL_CHECK= "google.com";
-    private int urlSizeToCheck = 2;
-    private String BASE_URL = "https://www.google.com";
+    private String BASE_URL_CHECK= "";
+    private int urlSizeToCheck = 1;
+    private String BASE_URL = "";
     private static final String xpathToURLs = "//*[@href and not(contains(@style,'none')) and not(contains(@type,'hidden'))]";
 
     public void setNumberOfThreads(int numberOfThreads){

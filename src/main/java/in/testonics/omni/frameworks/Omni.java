@@ -5,12 +5,17 @@ public class Omni {
     public static String SELENIUM = "SELENIUM";
     public static String PLAYWRIGHT = "PLAYWRIGHT";
     public static String ANDROID = "ANDROID";
+    public static boolean headless =  true;
 
     Selenium selenium = new Selenium();
     PW pw = new PW();
     Android android = new Android();
 
     public void setDriver(){
+        setDriver(true);
+    }
+
+    public void setDriver(boolean headless){
         framework = framework.toUpperCase();
         if (framework.equals(SELENIUM)){
             selenium.setDriver();
