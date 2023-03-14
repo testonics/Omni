@@ -2,12 +2,28 @@ Feature: Login to Google
 
   @Selenium
   Scenario: Login to Google
-      Given Login and Search Google
+      Given Launch the browser
+      And Navigate to the URL
       Then Search On Google
 
-#  @ChromeDevTools
+#  @Selenium @ChromeDevTools
 #  Scenario: Chrome Dev Tool Features
-#    When Collect Performance Metrics
+#    Given Launch the browser
+#    And Navigate to the URL
 #    And Test selenium 4 features
+#
+#  @Selenium @ChromeDevTools
+#  Scenario: Chrome Dev Tool Features
+#    Given Launch the browser
+#    And Navigate to the URL
+#    When Collect Performance Metrics
+#
+#  @Selenium @ChromeDevTools
+#  Scenario: Chrome Dev Tool Features
+#    Given Launch the browser
 #    When Override Device Mode
+#
+#  @Selenium @ChromeDevTools
+#  Scenario: Chrome Dev Tool Features
+#    Given Launch the browser
 #    When Listen Call Logs

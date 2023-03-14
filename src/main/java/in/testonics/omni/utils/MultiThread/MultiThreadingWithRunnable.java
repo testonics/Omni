@@ -13,14 +13,13 @@
 
 package in.testonics.omni.utils.MultiThread;
 
-import in.testonics.omni.web.Browser;
+import in.testonics.omni.frameworks.Omni;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -47,8 +46,10 @@ public class MultiThreadingWithRunnable implements Runnable {
     }
 
     public static void getListOfURLs(){
-        WebDriver driver = Browser.getWebDriver();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        Omni omni = new Omni();
+        WebDriver driver = (WebDriver) omni.getDriver();
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         driver.get(BASE_URL);
         List<WebElement> listOfLinks = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(xpathToURLs)));
         for (WebElement webElement: listOfLinks){

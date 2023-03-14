@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         glue={"StepDef"},
         plugin = {"pretty"},
         monochrome = true,
-        tags = {"@Selenium"}
+        tags = {"@Android"}
 )
 public class RunCucumberTest {
   

@@ -1,55 +1,74 @@
 package in.testonics.omni.frameworks;
 
+import com.microsoft.playwright.*;
 import in.testonics.omni.Interface.Omni;
-import com.microsoft.playwright.Locator;
-import com.microsoft.playwright.Page;
-import com.microsoft.playwright.BrowserType;
-import com.microsoft.playwright.Playwright;
 
 public class PW implements Omni {
 
-    static Playwright playwright;
-    public String url = "https://www.google.com";
-    static Page page;
+    protected static ThreadLocal<Playwright> playwright = new ThreadLocal<>();
+    protected static ThreadLocal<Page> page = new ThreadLocal<>();
+    private static String Url = "";
+    private static String browser = "CHROME";
+    private static boolean headlessMode = true;
 
+    @Override
+    public void setNavigationUrl(String url){
+        this.Url = url;
+    }
+
+    @Override
+    public void setHeadlessMode(boolean headlessMode){
+        this.headlessMode = headlessMode;
+    }
+
+    @Override
+    public void setBrowser(String browser){
+        this.browser = browser.toLowerCase();
+    }
+
+    @Override
     public void setDriver(){
-        playwright = Playwright.create();
+        Playwright playwrightDriver = Playwright.create();
+        BrowserType.LaunchOptions browserLaunchOptions = new BrowserType.LaunchOptions().setHeadless(headlessMode).setChannel(browser.toLowerCase()).setSlowMo(50);
+        Browser browser = playwrightDriver.chromium().launch(browserLaunchOptions);
+        Page pagePlaywright = browser.newContext().newPage();
+        playwright.set(playwrightDriver);
+        page.set(pagePlaywright);
     }
 
     public Playwright getDriver(){
-        return playwright;
+        return playwright.get();
     }
 
+    @Override
     public void closeDriver(){
-        playwright.close();
+        playwright.get().close();
     }
 
     public void navigate(){
-        com.microsoft.playwright.Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false).setChannel("chrome").setSlowMo(50));
-        page = browser.newContext().newPage();
-        page.navigate(url);
+        page.get().navigate(Url);
     }
 
     @Override
     public void click(Object element) {
-        Locator locator = getLocator(element);
+        Locator locator = getWebElement(element);
         locator.click();
     }
 
     @Override
     public void enter(Object element, String value) {
-        Locator locator = getLocator(element);
+        Locator locator = getWebElement(element);
         locator.fill(value);
         locator.press("Enter");
     }
 
     @Override
     public void select(Object element, Object value) {
-        Locator locator = getLocator(element);
+        Locator locator = getWebElement(element);
         locator.selectOption((String) value);
     }
 
-    private Locator getLocator(Object element){
-        return page.locator((String) element);
+    public Locator getWebElement(Object element){
+        return page.get().locator((String) element);
     }
 }

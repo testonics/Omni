@@ -14,6 +14,22 @@ public class Android implements Omni {
 
     protected static ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<>();
     MutableCapabilities caps = new MutableCapabilities();
+    public String appIDOrName = "";
+
+    @Override
+    public void setNavigationUrl(String url){
+        System.out.println("Not Applicable");
+    }
+
+    @Override
+    public void setHeadlessMode(boolean headlessMode){
+        System.out.println("Not Applicable");
+    }
+
+    @Override
+    public void setBrowser(String browser){
+        System.out.println("Not Applicable");
+    }
 
     public void setCapabilities(){
         caps.setCapability("appiumVersion", "1.17.1");
@@ -24,15 +40,19 @@ public class Android implements Omni {
         caps.setCapability("idleTimeout", "90");
         caps.setCapability("newCommandTimeout", "90");
         caps.setCapability("name", "android test");
-        caps.setCapability("app","storage:410cd900-647f-4629-a41d-f61b1be92d12");
+        caps.setCapability("app","storage:" + appIDOrName);
     }
 
-    public void setDriver() {
+    public void setApp(String appIDOrName){
+        this.appIDOrName = appIDOrName;
+    }
 
-        //Sauncelabs details
+    @Override
+    public void setDriver() {
+        //Saucelabs details
         String user = "";
         String accessKey = "";
-        String server = "@ondemand.eu-central-1.saucelabs.com:443/wd/hub";
+        String server = "@ondemand.us-west-1.saucelabs.com:443/wd/hub";
 
         setCapabilities();
         String url = "https://" + user + ":" + accessKey + server;
@@ -50,13 +70,9 @@ public class Android implements Omni {
         return driver.get();
     }
 
+    @Override
     public void closeDriver(){
-        getDriver().close();
         getDriver().quit();
-    }
-
-    public void navigate(){
-        //TODO
     }
 
     @Override
@@ -81,10 +97,9 @@ public class Android implements Omni {
         }else{
             dropDown.selectByIndex((Integer) value);
         }
-
     }
 
-    WebElement getWebElement(Object element){
+    public WebElement getWebElement(Object element){
         if (element instanceof String)
             return getDriver().findElement(By.xpath((String) element));
         else

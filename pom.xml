@@ -38,8 +38,10 @@
     <properties>
         <browser>firefox</browser>
         <rest.version>4.3.3</rest.version>
-        <appium.version>8.3.0</appium.version>
-        <selenium.version>4.8.0</selenium.version>
+<!--        <appium.version>8.3.0</appium.version>-->
+<!--        <selenium.version>4.8.1</selenium.version>-->
+        <appium.version>7.3.0</appium.version>
+        <selenium.version>3.141.59</selenium.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
@@ -214,7 +216,7 @@
                     </systemPropertyVariables>
                     <includes>
                         <include>**/RunCucumberTest.java</include>
-                        <include>**/TestJUnit/**/*.java</include>
+<!--                        <include>**/TestJUnit/**/*.java</include>-->
                     </includes>
                 </configuration>
             </plugin>

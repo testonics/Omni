@@ -1,7 +1,7 @@
 Feature: Mobile Tests
 
-	@Appium
+	@Appium @Android
 	Scenario: Login to a mobile app
-		When launch mobile app
+		When launch mobile android app
 
 
