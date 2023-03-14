@@ -50,8 +50,8 @@ public class Android implements Omni {
     @Override
     public void setDriver() {
         //Saucelabs details
-        String user = "NikhilJain";
-        String accessKey = "e2af18e1-2e24-4a9e-aa44-485f7c5c77f3";
+        String user = "";
+        String accessKey = "";
         String server = "@ondemand.us-west-1.saucelabs.com:443/wd/hub";
 
         setCapabilities();
