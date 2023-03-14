@@ -17,18 +17,17 @@ public class DeadLink {
 
     private int numberOfThreads = 1;
     private static Map<String,String> links = new ConcurrentHashMap<>();
+    private static Map<String,String> linksChecked = new ConcurrentHashMap<>();
     private String BASE_URL_CHECK= "";
     private int urlSizeToCheck = 1;
     private String BASE_URL = "";
-    private static final String xpathToURLs = "//*[@href and not(contains(@style,'none')) and not(contains(@type,'hidden'))]";
+    private static final String xpathToURLs = "//*[@href]";
 
     public void setNumberOfThreads(int numberOfThreads){
         this.numberOfThreads = numberOfThreads;
     }
 
-    public void setBaseURL(String baseURL){
-        this.BASE_URL = baseURL;
-    }
+    public void setBaseURL(String baseURL){this.BASE_URL = baseURL;}
 
     public void setBaseURLCheck(String baseURLCheck){
         this.BASE_URL_CHECK = baseURLCheck;
@@ -41,6 +40,8 @@ public class DeadLink {
     Omni omni = new Omni();
 
     public void findDeadLinks() throws InterruptedException {
+        omni.setFramework("selenium");
+        omni.setHeadlessMode(true);
         omni.setDriver();
         List<Thread> threads = new ArrayList<>();
 
@@ -50,6 +51,10 @@ public class DeadLink {
 
         for (int i = 0; i < numberOfThreads; i++) {
             String link = links.keySet().iterator().next();
+            //Ignoring the link if it's already checked
+            if (linksChecked.get(link) != null){
+                continue;
+            }
             Thread thread = new Thread(new MultiThreadingWithRunnable(link));
             threads.add(thread);
             thread.start();
@@ -59,7 +64,12 @@ public class DeadLink {
             thread.join();
         }
 
-        System.out.println("List Of URLs : " + new MultiThreadingWithRunnable().getURLs());
+        links = new MultiThreadingWithRunnable().getURLs();
+        for (Map.Entry mapElement : links.entrySet()) {
+            String link = mapElement.getKey().toString();
+            linksChecked.put(link,links.get(link));
+        }
+        System.out.println("List Of URLs : " + linksChecked);
     }
 
     private Map<String,String> setUrlSizeCheck(Map<String,String> links){
@@ -70,6 +80,8 @@ public class DeadLink {
             link = link.replace("https://","");
             if (link.split("/").length>urlSizeToCheck){
                 urls.put(mapElement.getKey().toString(),"alive");
+            }else{
+                linksChecked.put(mapElement.getKey().toString(),"Ignored: Based on URL Size Check");
             }
         }
         return urls;
@@ -81,6 +93,8 @@ public class DeadLink {
             String link = mapElement.getKey().toString();
             if (!"".equals(BASE_URL_CHECK) && link.contains(BASE_URL_CHECK)) {
                 urls.put(link, "alive");
+            }else {
+                linksChecked.put(mapElement.getKey().toString(),"Ignored: Based on Base URL Check");
             }
         }
         return urls;

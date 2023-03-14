@@ -216,7 +216,7 @@
                     </systemPropertyVariables>
                     <includes>
                         <include>**/RunCucumberTest.java</include>
-<!--                        <include>**/TestJUnit/**/*.java</include>-->
+                        <include>**/TestJUnit/**/*.java</include>
                     </includes>
                 </configuration>
             </plugin>

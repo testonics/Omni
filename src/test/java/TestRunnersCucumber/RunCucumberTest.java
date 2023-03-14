@@ -10,14 +10,7 @@ import org.junit.runner.RunWith;
         glue={"StepDef"},
         plugin = {"pretty"},
         monochrome = true,
-        tags = {"@Android"}
+        tags = {"@Playwright,@Selenium"}
 )
 public class RunCucumberTest {
-  
-  //This test is intentionally blank
-  
-  //See: 
-  //  * src/test/resources for Gherkin Feature files
-  //  * bank.Stepdefs for step definitions
-  
 }

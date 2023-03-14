@@ -3,7 +3,7 @@
   "data": {
     "leagueId": 35,
     "homeTeam": "Norway",
-    "visitingTeam": "England",
+    "visitingTeam": "England"
   },
   "odds": [{
     "price": "1.30",

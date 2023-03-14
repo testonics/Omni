@@ -25,41 +25,41 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class MultiThreadingWithRunnable implements Runnable {
-    static Map<String,String> links = new ConcurrentHashMap<>();
-//    static List<String> listOfURLs = new ArrayList<>();
-//    static final String BASE_URL_CHECK= "";
-//    private static int urlSizeToCheck = 2;
-    public static String BASE_URL = "";
-    private static String xpathToURLs = "//*[@href and not(contains(@style,'none')) and not(contains(@type,'hidden'))]";
+    private static Map<String, String> links = new ConcurrentHashMap<>();
+    private static String BASE_URL = "";
+    private static String xpathToURLs = "//*[@href]";
 
-    public MultiThreadingWithRunnable(){}
+    public MultiThreadingWithRunnable() {
+    }
 
-    public MultiThreadingWithRunnable(String url){
+    public MultiThreadingWithRunnable(String url) {
         BASE_URL = url;
     }
 
-//    @Override
     public void run() {
         // Displaying the thread that is running
         System.out.println("Thread " + Thread.currentThread().getId() + " is running");
         getListOfURLs();
     }
 
-    public static void getListOfURLs(){
+    public static void getListOfURLs() {
         Omni omni = new Omni();
+        omni.setFramework("selenium");
+        omni.setHeadlessMode(true);
+        omni.setDriver();
         WebDriver driver = (WebDriver) omni.getDriver();
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebDriverWait wait = new WebDriverWait(driver, 10);
         driver.get(BASE_URL);
         List<WebElement> listOfLinks = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(xpathToURLs)));
-        for (WebElement webElement: listOfLinks){
+        for (WebElement webElement : listOfLinks) {
             String url = webElement.getAttribute("href");
-            links.put(url,"alive");
+            links.put(url, "alive");
         }
         driver.quit();
     }
 
-    public Map<String,String> getURLs(){
+    public Map<String, String> getURLs() {
         return links;
     }
 }

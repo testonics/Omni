@@ -47,11 +47,13 @@ public class Stepdefs {
     }
 
     @Given("^launch mobile android app$")
-    public void launchMobileApp(){
+    public void launchMobileApp() throws InterruptedException {
         omni.setFramework("android");
         omni.setApp("cbbdfe53-e55e-4dcf-a7b1-ba402e243b8d");
         omni.setDriver();
-        omni.click("TODO");
+        omni.click("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout");
+        omni.click("//*[@content-desc='ranking']/android.widget.TextView");
+        omni.click("//*[@content-desc='Categories']/android.widget.TextView");
         omni.close();
     }
 
