@@ -6,7 +6,16 @@
 ###### Visit [Testonics](https://www.testonics.in) for more details.
 
 ***OMNI*** a single stop test automation framework to test mobile (ios & android) or web application and API testing. Tech stack of the framework is:
-        
+
+## Features
+
+- PDF comparison (Text, Font Name, Font Style, Font Size validation for Single PDF or all pdf in a folder)
+- Dead links identification
+- Keep the session alive by mouse movement
+- API/Mobile/UI/Desktop Applications Testing
+
+## Tech Stack
+
 - Mobile Testing: Appium
 - UI Testing: Selenium & Playwright
 - API Testing: Rest Assured
@@ -29,7 +38,7 @@
 mvn install
 ```
 
-## [Click Here For Latest Package](https://github.com/testonics/Omni/packages/)
+## [Released Package](https://github.com/testonics/Omni/packages/)
 
 ## Contact Us
 
