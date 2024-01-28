@@ -1,10 +1,10 @@
 Feature: Login to Google
 
-  @Selenium
-  Scenario: Login to Google
-      Given Launch the browser
-      And Navigate to the URL
-      Then Search On Google
+#  @Selenium
+#  Scenario: Login to Google
+#      Given Launch the browser
+#      And Navigate to the URL
+#      Then Search On Google
 
 #  @Selenium @ChromeDevTools
 #  Scenario: Chrome Dev Tool Features

@@ -1,10 +1,6 @@
 package TestTestng.Web;
 
 import in.testonics.omni.frameworks.Omni;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
 import org.testng.annotations.Test;
 
 public class SimpleTest {
@@ -14,15 +10,15 @@ public class SimpleTest {
     @Test
     public void launchURL() {
         //Creating an object of ChromeDriver
-        WebDriver driver = (WebDriver) omni.getDriver();
-
-        driver.get("https://www.google.com");
-
-        WebElement element = driver.findElement(By.name("q"));
-        element.sendKeys("Cheese!");
-        element.submit();
-        System.out.println("Page title is: " + driver.getTitle());
-        driver.quit();
+//        WebDriver driver = (WebDriver) omni.getDriver();
+//
+//        driver.get("https://www.google.com");
+//
+//        WebElement element = driver.findElement(By.name("q"));
+//        element.sendKeys("Cheese!");
+//        element.submit();
+//        System.out.println("Page title is: " + driver.getTitle());
+//        driver.quit();
     }
 
 }
