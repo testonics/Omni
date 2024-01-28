@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-public class ComparePDF {
+public class OmniPDF {
 
     public void comparePDF(String pdfFileOrFolderPath1, String pdfFileOrFolderPath2) throws Exception {
         comparePDF(pdfFileOrFolderPath1,pdfFileOrFolderPath2,0);
@@ -141,4 +141,26 @@ public class ComparePDF {
         }
     }
 
+    //Fetches the PDF Text
+    public String getPdfText(String pdfFile) throws Exception {
+        return getPdfText(new File(pdfFile));
+    }
+
+    public String getPdfText(File pdfFile) throws Exception {
+        return getPdfText(pdfFile,0);
+    }
+
+    public String getPdfText(String pdfFile, int pageNumber) throws Exception{
+        return getPdfText(new File(pdfFile),0);
+    }
+
+    public String getPdfText(File pdfFile, int pageNumber) throws Exception{
+        PDDocument pdf = PDDocument.load(pdfFile);
+        PDFTextStripper pdfStripper = new PDFTextStripper();
+        if (pageNumber != 0){
+            pdfStripper.setStartPage(pageNumber);
+            pdfStripper.setEndPage(pageNumber);
+        }
+        return pdfStripper.getText(pdf);
+    }
 }
