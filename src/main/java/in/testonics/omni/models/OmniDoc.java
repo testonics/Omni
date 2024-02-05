@@ -1,5 +1,6 @@
-package in.testonics.omni.utils;
+package in.testonics.omni.models;
 
+import in.testonics.omni.utils.FileUtils;
 import org.apache.poi.hwpf.HWPFDocument;
 import org.apache.poi.hwpf.extractor.WordExtractor;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
@@ -7,67 +8,37 @@ import org.apache.poi.xwpf.usermodel.XWPFDocument;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.List;
 
-public class OmniDoc {
+public class OmniDoc extends FileUtils {
 
-    public void compareText(String fileOrFolderPath1, String fileOrFolderPath2) throws Exception {
-        compareText(fileOrFolderPath1,fileOrFolderPath2,0);
-    }
-
-    public void compareText(File file1, File file2) throws Exception {
-        compareText(file1,file2,0);
-    }
-
-    //Compares the PDF files or all the files in 2 folders provided the file with the same names are present
-    public void compareText(String fileOrFolderPath1, String fileOrFolderPath2, int pageNumber) throws Exception {
-        File file1 = new File(fileOrFolderPath1);
-        File file2 = new File(fileOrFolderPath2);
-
-        if (file1.isDirectory() && file2.isDirectory()) {
-            File[] files = file1.listFiles();
-            assert files != null;
-            for (File file : files) {
-                if (file.isFile()) {
-                    String fileName = file.getName();
-                    compareText(file, new File(fileOrFolderPath2 + "//" + fileName),pageNumber);
-                }
-            }
-        } else {
-            compareText(file1, file2, pageNumber);
-        }
-
-    }
-
-    public void compareText(File file1, File file2, int pageNumber) throws Exception {
+    public List<String> CompareFiles(File file1, File file2, int pageNumber) throws Exception {
         System.out.println("Comparing Doc files (" + file1 + "," + file2 + ")");
-        String doc1 = getText(file1);
-        String doc2 = getText(file2);
+        String doc1 = getFileText(file1);
+        String doc2 = getFileText(file2);
         String[] doc1Lines =  doc1.split("\n");
         String[] doc2Lines =  doc2.split("\n");
         for (int i=0; i<doc1Lines.length;i++) {
             if (!doc1Lines[i].equals(doc2Lines[i])) {
+                errors.add("Validation Failed For line#" + i + " | " + doc1Lines[i] + " | " + doc2Lines[i]);
                 System.out.println("Validation Failed For line# " + i);
                 System.out.println("File 1 Text : " + doc1Lines[i]);
                 System.out.println("File 2 Text : " + doc2Lines[i]);
             }
         }
-
+        return errors;
     }
 
-    //Fetches the PDF Text
-    public String getText(String file) throws Exception {
-        return getText(new File(file));
+
+    public String getFileText(File file) throws Exception {
+        return getFileText(file,0);
     }
 
-    public String getText(File file) throws Exception {
-        return getText(file,0);
+    public String getFileText(String file, int pageNumber) throws Exception{
+        return getFileText(new File(file),0);
     }
 
-    public String getText(String file, int pageNumber) throws Exception{
-        return getText(new File(file),0);
-    }
-
-    public String getText(File file, int pageNumber) throws Exception{
+    public String getFileText(File file, int pageNumber) throws Exception{
         // Create a FileInputStream to read the DOC file
         FileInputStream fis = new FileInputStream(file.getAbsolutePath());
         String text = "";

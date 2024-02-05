@@ -1,5 +1,6 @@
-package in.testonics.omni.utils;
+package in.testonics.omni.models;
 
+import in.testonics.omni.utils.FileUtils;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPageTree;
 import org.apache.pdfbox.text.PDFTextStripper;
@@ -9,37 +10,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-public class OmniPDF {
+public class OmniPdf extends FileUtils {
 
-    public void comparePDF(String pdfFileOrFolderPath1, String pdfFileOrFolderPath2) throws Exception {
-        comparePDF(pdfFileOrFolderPath1,pdfFileOrFolderPath2,0);
-    }
-
-    public void comparePDF(File pdfFile1, File pdfFile2) throws Exception {
-        comparePDF(pdfFile1,pdfFile2,0);
-    }
-
-    //Compares the PDF files or all the files in 2 folders provided the file with the same names are present
-    public void comparePDF(String pdfFileOrFolderPath1, String pdfFileOrFolderPath2, int pageNumber) throws Exception {
-        File file1 = new File(pdfFileOrFolderPath1);
-        File file2 = new File(pdfFileOrFolderPath2);
-
-        if (file1.isDirectory() && file2.isDirectory()) {
-            File[] files = file1.listFiles();
-            assert files != null;
-            for (File file : files) {
-                if (file.isFile()) {
-                    String fileName = file.getName();
-                    comparePDF(file, new File(pdfFileOrFolderPath2 + "//" + fileName),pageNumber);
-                }
-            }
-        } else {
-            comparePDF(file1, file2, pageNumber);
-        }
-
-    }
-
-    public void comparePDF(File pdfFile1, File pdfFile2, int pageNumber) throws Exception {
+    public List<String> CompareFiles(File pdfFile1, File pdfFile2, int pageNumber) throws Exception {
         System.out.println("Comparing PDF files (" + pdfFile1 + "," + pdfFile2 + ")");
         PDDocument pdf1 = PDDocument.load(pdfFile1);
         PDDocument pdf2 = PDDocument.load(pdfFile2);
@@ -127,6 +100,7 @@ public class OmniPDF {
                         for (int j = 0; j < pdf1PageTextLines.length; j++) {
                             if (!pdf1PageTextLines[j].equals(pdf2PageTextLines[j])) {
                                 System.out.println("Validation Failed For Page# " + pageNumberToValidate + " and line# " + (j + 1));
+                                errors.add("Validation Failed For Page# " + pageNumberToValidate + " and line# " + (j + 1) + " | " + pdf1PageTextLines[j] + " | " + pdf2PageTextLines[j]);
                                 System.out.println("PDF 1 Text : " + pdf1PageTextLines[j]);
                                 System.out.println("PDF 2 Text : " + pdf2PageTextLines[j]);
                             }
@@ -139,22 +113,18 @@ public class OmniPDF {
             pdf1.close();
             pdf2.close();
         }
+        return errors;
     }
 
-    //Fetches the PDF Text
-    public String getPdfText(String pdfFile) throws Exception {
-        return getPdfText(new File(pdfFile));
+    public String getFileText(File pdfFile) throws Exception {
+        return getFileText(pdfFile,0);
     }
 
-    public String getPdfText(File pdfFile) throws Exception {
-        return getPdfText(pdfFile,0);
+    public String getFileText(String pdfFile, int pageNumber) throws Exception{
+        return getFileText(new File(pdfFile),pageNumber);
     }
 
-    public String getPdfText(String pdfFile, int pageNumber) throws Exception{
-        return getPdfText(new File(pdfFile),0);
-    }
-
-    public String getPdfText(File pdfFile, int pageNumber) throws Exception{
+    public String getFileText(File pdfFile, int pageNumber) throws Exception{
         PDDocument pdf = PDDocument.load(pdfFile);
         PDFTextStripper pdfStripper = new PDFTextStripper();
         if (pageNumber != 0){
