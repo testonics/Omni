@@ -31,7 +31,7 @@
 <dependency>
   <groupId>org.testonics</groupId>
   <artifactId>omni</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.2</version>
 </dependency>
 
 ## Install 2/2: Run via command line
@@ -42,7 +42,7 @@ mvn install
 
 ## Contact Us
 
-Send your queries to reshu.testonics@gmail.com know more.
+Send your queries to support@testonics.in to know more.
 
 ## WinAppDriver Setup Instructions
 
