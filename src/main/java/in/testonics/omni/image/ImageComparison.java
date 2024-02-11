@@ -4,7 +4,12 @@ import in.testonics.omni.image.model.ExcludedAreas;
 import in.testonics.omni.image.model.ImageComparisonResult;
 import in.testonics.omni.image.model.ImageComparisonState;
 import in.testonics.omni.image.model.Rectangle;
+import in.testonics.omni.utils.DateUtils;
+import net.sourceforge.tess4j.ITesseract;
+import net.sourceforge.tess4j.Tesseract;
+import net.sourceforge.tess4j.TesseractException;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -34,7 +39,7 @@ public class ImageComparison {
     /**
      * Actual image for comparison
      */
-    private final BufferedImage actual;
+    private BufferedImage actual;
 
     /**
      * Width of the line that is drawn the rectangle
@@ -149,6 +154,11 @@ public class ImageComparison {
     private Color excludedRectangleColor = Color.GREEN;
 
     /**
+     * Sets Image Resolution. By default, it's 70.
+     */
+    private int defaultImageResolution = 70;
+
+    /**
      * Create a new instance of {@link ImageComparison} that can compare the given images.
      *
      * @param expected expected image to be compared
@@ -190,11 +200,19 @@ public class ImageComparison {
      * @return the result of the drawing.
      */
     public ImageComparisonResult compareImages() {
+        return compareImages(false);
+    }
+    public ImageComparisonResult compareImages(boolean resize) {
 
         // check that the images have the same size
         if (isImageSizesNotEqual(expected, actual)) {
             BufferedImage actualResized = ImageComparisonUtil.resize(actual, expected.getWidth(), expected.getHeight());
-            return ImageComparisonResult.defaultSizeMisMatchResult(expected, actual, getDifferencePercent(actualResized, expected));
+            if (resize){
+                actual = actualResized;
+            }else {
+                return ImageComparisonResult.defaultSizeMisMatchResult(expected, actual, getDifferencePercent(actualResized, expected));
+            }
+
         }
 
         List<Rectangle> rectangles = populateRectangles();
@@ -387,6 +405,17 @@ public class ImageComparison {
      */
     private BufferedImage drawRectangles(List<Rectangle> rectangles) {
         BufferedImage resultImage = ImageComparisonUtil.deepCopy(actual);
+
+        //Save the failed area as a new file and extracts the text
+        for(Rectangle rectangle: rectangles){
+            String subImageActual = getSubImage(rectangle, actual);
+            String subImageExpected = getSubImage(rectangle, expected);
+            String imageTextActual = getImageText(subImageActual);
+            String imageTextExpected = getImageText(subImageExpected);
+            System.out.println("Expected Text : " + imageTextExpected);
+            System.out.println("Actual Text : " + imageTextActual);
+        }
+
         Graphics2D graphics = preparedGraphics2D(resultImage);
 
         drawExcludedRectangles(graphics);
@@ -394,6 +423,64 @@ public class ImageComparison {
 
         return resultImage;
     }
+
+    /**
+     * Gets the text from an image
+     *
+     * @param imagePath : path of the image
+     * @return imageText : Text extracted from the image
+     */
+    private String getImageText(String imagePath){
+
+        if(imagePath.equals("")){
+            return "Invalid image path : " + imagePath;
+        }
+
+        String imageText = "";
+        File imageFile = new File(imagePath);
+        ITesseract instance = new Tesseract();  // JNA Interface Mapping
+        instance.setDatapath(".\\src\\main\\resources\\language"); // replace with your tessdata path
+        instance.setTessVariable("user_defined_dpi", String.valueOf(defaultImageResolution)); //sets the resolution
+
+        //Handling Multiple Language
+        //instance.setLanguage("fra"); // for French
+        //Download the language file
+        // https://github.com/tesseract-ocr/tessdata/blob/main/eng.traineddata
+
+        try {
+            imageText = instance.doOCR(imageFile);
+        } catch (TesseractException e) {
+            System.err.println(e.getMessage());
+        }
+        return imageText;
+    }
+
+    /**
+     * Gets the subimage from an image based on rectangle co-ordinates.
+     *
+     * @param rectangle : The rectangle objects.
+     * @return result {@link BufferedImage} Sub Image extracted based on rectangle
+     */
+    private String getSubImage(Rectangle rectangle, BufferedImage image){
+        String subImagePath = "";
+        int x = rectangle.getMinPoint().x;
+        int y = rectangle.getMinPoint().y;
+        int w = rectangle.getMaxPoint().x - rectangle.getMinPoint().x;
+        int h = rectangle.getMaxPoint().y - rectangle.getMinPoint().y;
+        if (w>0 && h>0){
+            try{
+                Random rand = new Random();
+                subImagePath = ".\\target\\" + w + "-" + y + "_" + new DateUtils().getTimeStamp() + rand.nextInt(1000) + ".png";
+                BufferedImage subImage = image.getSubimage(x,y,w,h);
+                ImageIO.write(subImage, "png", new File(subImagePath));
+            }catch (Exception e){
+                subImagePath = "";
+                System.err.println(e.getMessage());
+            }
+        }
+        return subImagePath;
+    }
+
 
     /**
      * Draw excluded rectangles.

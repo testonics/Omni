@@ -91,7 +91,7 @@ public class OmniGui {
                 // Add your code for submit button action here
                 // You can use the selected file paths from browse buttons
                 outputTextArea.append("File Comparison Started ....\n");
-                OmniDoc omniFiles = new OmniDoc();
+                OmniFiles omniFiles = new OmniFiles();
                 try {
                     String errors = omniFiles.CompareFiles(absolutePathFile1[0], absolutePathFile2[0],0).toString();
                     if (errors.equals("")){

@@ -13,6 +13,7 @@ import java.util.List;
 public class OmniPdf extends FileUtils {
 
     public List<String> CompareFiles(File pdfFile1, File pdfFile2, int pageNumber) throws Exception {
+        setColumnNames();
         System.out.println("Comparing PDF files (" + pdfFile1 + "," + pdfFile2 + ")");
         PDDocument pdf1 = PDDocument.load(pdfFile1);
         PDDocument pdf2 = PDDocument.load(pdfFile2);
@@ -99,10 +100,7 @@ public class OmniPdf extends FileUtils {
                     } else {
                         for (int j = 0; j < pdf1PageTextLines.length; j++) {
                             if (!pdf1PageTextLines[j].equals(pdf2PageTextLines[j])) {
-                                System.out.println("Validation Failed For Page# " + pageNumberToValidate + " and line# " + (j + 1));
-                                errors.add("Validation Failed For Page# " + pageNumberToValidate + " and line# " + (j + 1) + " | " + pdf1PageTextLines[j] + " | " + pdf2PageTextLines[j]);
-                                System.out.println("PDF 1 Text : " + pdf1PageTextLines[j]);
-                                System.out.println("PDF 2 Text : " + pdf2PageTextLines[j]);
+                                errors.add("Page#: " + pageNumberToValidate + " | Line#: " + (j + 1) + "," + pdf1PageTextLines[j] + "," + pdf2PageTextLines[j]);
                             }
                         }
                     }

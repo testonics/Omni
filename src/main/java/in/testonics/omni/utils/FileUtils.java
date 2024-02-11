@@ -6,7 +6,11 @@ import java.util.*;
 public class FileUtils {
 
     public List<String> errors = new ArrayList<>();
-    public String supportedFiles = "pdf,doc,docx,xls,xlsx,txt,csv,aspx,ascx,json";
+    public String supportedFiles = "pdf,doc,docx,xls,xlsx,txt,csv,aspx,ascx,json,jpg,png,jpeg";
+
+    public void setColumnNames(){
+        this.errors.add("Mismatch,Expected,Actual");
+    }
 
     public void CompareFiles(String fileOrFolderPath1, String fileOrFolderPath2) throws Exception {
         CompareFiles(fileOrFolderPath1,fileOrFolderPath2,0);
@@ -67,20 +71,16 @@ public class FileUtils {
     }
 
     public void compareHashMap(Map<String,List<String>> map1, Map<String,List<String>> map2){
+        setColumnNames();
         Set<String> headers = map1.keySet();
         for(String header : headers){
             int rowsCount = map1.get(header).size();
             for (int i=0;i<rowsCount;i++){
                 if (!map1.get(header).get(i).equals(map2.get(header).get(i))){
-                    System.out.println("Mismatch Found | Column : " + header + " line# " + i);
-                    errors.add("Mismatch Found | Column : " + header + " line# " + i + " | File 1 : " + map1.get(header).get(i) + " | File 2: " + map2.get(header).get(i));
-                    System.out.println("File 1 Text : " + map1.get(header).get(i));
-                    System.out.println("File 2 Text : " + map2.get(header).get(i));
+                    errors.add("Column : " + header + " | Row : " + i + "," + map1.get(header).get(i) + "," + map2.get(header).get(i));
                 }
-
             }
         }
-
     }
 
     //Returns the extension of the file

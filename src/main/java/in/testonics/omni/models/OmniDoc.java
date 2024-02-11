@@ -14,16 +14,14 @@ public class OmniDoc extends FileUtils {
 
     public List<String> CompareFiles(File file1, File file2, int pageNumber) throws Exception {
         System.out.println("Comparing Doc files (" + file1 + "," + file2 + ")");
+        setColumnNames();
         String doc1 = getFileText(file1);
         String doc2 = getFileText(file2);
         String[] doc1Lines =  doc1.split("\n");
         String[] doc2Lines =  doc2.split("\n");
         for (int i=0; i<doc1Lines.length;i++) {
             if (!doc1Lines[i].equals(doc2Lines[i])) {
-                errors.add("Validation Failed For line#" + i + " | " + doc1Lines[i] + " | " + doc2Lines[i]);
-                System.out.println("Validation Failed For line# " + i);
-                System.out.println("File 1 Text : " + doc1Lines[i]);
-                System.out.println("File 2 Text : " + doc2Lines[i]);
+                errors.add("Line# : " + i + "," + doc1Lines[i] + "," + doc2Lines[i]);
             }
         }
         return errors;

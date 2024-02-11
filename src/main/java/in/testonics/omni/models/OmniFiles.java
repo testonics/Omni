@@ -44,6 +44,11 @@ public class OmniFiles extends FileUtils {
                 return new OmniXls().CompareFiles(file1, file2, pageOrSheetNumber);
             case "csv":
                 return new OmniCsv().CompareFiles(file1, file2);
+            case "jpg":
+            case "png":
+            case "jpeg":
+                new OmniImage().CompareFiles(file1, file2);
+                return null;
             default:
                 errors.add(fileExtension + " file is not supported.");
                 return errors;

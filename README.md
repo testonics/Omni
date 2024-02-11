@@ -29,7 +29,7 @@
 ## Install 1/2: Add this to pom.xml:
 
 <dependency>
-  <groupId>org.testonics</groupId>
+  <groupId>in.testonics</groupId>
   <artifactId>omni</artifactId>
   <version>1.0.2</version>
 </dependency>
